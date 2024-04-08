@@ -1,1 +1,245 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles */
+
+
+* {
+    font-family: 'Roboto', Arial, sans-serif;
+    /*color: #616161;*/
+    color: #7f3535;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.background-image {
+    width: 100%;
+    position: relative;
+    /*height: 100vh; !* גובה של הדף ככל העמוד *!*/
+    /*background-image: url("assets/Food-Ingredients.jpg"); !* URL של תמונת הרקע *!*/
+    background-size: cover; /* שיקוף התמונה כך שתתאים לגודל הדף */
+    background-position: center; /* מיקום התמונה באמצע הדף */
+    opacity: 0.2;
+}
+
+.food-image {
+    width: 100%;
+    /*height: 100%;*/
+    filter: brightness(55%);
+    /*flex-direction: row;*/
+    /*justify-content: space-between;*/
+    /*align-items: center;*/
+}
+
+.food-link {
+    position: relative;
+}
+
+.food-link h1, .food-link em {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.on-image {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    top: 50%;
+    left: 50%;
+    font-size: 66px;
+    color: #ee3c06;
+}
+.home-button {
+    top: 80%;
+    left: 50%;
+    font-size: 66px;
+    color: #ee3c06;
+}
+
+.list-button {
+    top: 90%;
+    right: -5%;
+    font-size: 34px;
+    color: #ee9a1d;
+    border: 2px solid #eca308;
+    border-radius: 20px;
+    padding: 5Px;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    /*display: flex;*/
+    /*flex-direction: row;*/
+}
+
+router-outlet + * {
+    padding: 0 16px;
+}
+
+/* Text */
+
+h1 {
+    /*font-size: 32px;*/
+    font-size: 42px;
+}
+
+h2 {
+    /*font-size: 20px;*/
+    font-size: 30px;
+}
+
+h1, h2 {
+    font-weight: lighter;
+}
+
+p {
+    /*font-size: 14px;*/
+    font-size: 24px;
+}
+
+/* Hyperlink */
+
+a {
+    cursor: pointer;
+    color: #7f3535;
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+/* Input */
+
+input {
+    /*font-size: 14px;*/
+    font-size: 24px;
+    border-radius: 2px;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #BDBDBD;
+}
+
+label {
+    /*font-size: 12px;*/
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    display: block;
+    text-transform: uppercase;
+}
+
+/* Button */
+.button, button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 2px;
+    /*font-size: 14px;*/
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #DA8765FF;
+    color: white;
+    border: none;
+}
+
+.button:hover, button:hover {
+    opacity: 0.8;
+    font-weight: normal;
+}
+
+.button:disabled, button:disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+/* Fancy Button */
+
+.fancy-button {
+    background-color: white;
+    color: #DA8765FF;
+}
+
+.fancy-button i.material-icons {
+    color: #DA8765FF;
+    padding-right: 4px;
+}
+
+/* Top Bar */
+
+/*app-top-bar {*/
+/*  width: 100%;*/
+/*  height: 68px;*/
+/*  background-color: #E8BF72FF;*/
+/*  padding: 16px;*/
+/*  display: flex;*/
+/*  flex-direction: row;*/
+/*  justify-content: space-between;*/
+/*  align-items: center;*/
+/*}*/
+
+app-top-bar h1 {
+    color: white;
+    margin: 0;
+}
+
+/* Checkout Cart, Shipping Prices */
+
+.cart-item, .shipping-item {
+    width: 100%;
+    min-width: 400px;
+    max-width: 450px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 32px;
+    margin-bottom: 8px;
+    border-radius: 2px;
+    background-color: #f8c760;
+    font-size: 30px;
+}
+
+.products-table {
+
+    width: 400px; /* רוחב הטבלה */
+    border-collapse: collapse; /* מזיק מסגרת בין התאים */
+    margin: 0 auto; /* מיקום אופקי במרכז העמוד */
+    /*margin-right: 300px;*/
+    /*align-content: center;*/
+}
+
+.products-table th, .products-table td {
+    padding: 8px; /* ריווח בין התוכן לשולי התא */
+    border: 1px solid #ddd; /* גבולות התאים */
+    text-align: left; /* מידע בתאים מיושר לשמאל */
+    font-size: 26px;
+}
+
+.products-table th {
+    background-color: #eca308; /* רקע התאים של הכותרת */
+    color: #d20000; /* צבע הכותרת */
+    font-size: 34px;
+    text-align: center;
+}
+
+.products-table tr {
+    background-color: #f8ecd3; /* רקע התאים של הכותרת */
+}
+
+.products-table tr:nth-child(odd) {
+    background-color: #f1ca75; /* Light background color for odd rows */
+}
+
+
+.add, .delete {
+    border: 3px solid #7f3535; /* מסגרת עם צבע אפור נמוך */
+    width: 400px; /* רוחב הקופסה */
+    padding: 20px; /* ריווח מסביב לתוכן */
+    /*background-color: #f9f9f9; !* צבע רקע אפור בהיר *!*/
+}
