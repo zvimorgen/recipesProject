@@ -1,0 +1,13 @@
+<div class="food-link">
+    <img src="../../assets/Food-Ingredients.jpg" class="background-image"/>
+    <div class="on-image details">
+        <h2>Product Details</h2>
+
+        <div *ngIf="product">
+            <h3>{{ products[0].id }}</h3>
+            <button type="button" (click)="addToCart(products[0])">Add To Your List</button>
+
+        </div>
+    </div>
+</div>
+<!--    <h4>{{product.price | currency}}</h4>-->

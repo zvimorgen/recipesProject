@@ -1,0 +1,33 @@
+<div class="food-link">
+    <img src="../../assets/Food-Ingredients.jpg" class="background-image"/>
+    <div class="on-image details">
+<!--        <h3>Cart</h3>-->
+
+<!--        <p>-->
+<!--            <a routerLink="/shipping">Shipping Prices</a>-->
+<!--        </p>-->
+        <p>Your Ingredient List</p>
+        <div class="cart-item" *ngFor="let item of items">
+            <span>{{ item.name }}</span>
+        </div>
+
+<!--        <form [formGroup]="checkOutForm" (ngSubmit)="onSubmit()">-->
+
+<!--            <div>-->
+<!--                <label for="name">-->
+<!--                    Name-->
+<!--                </label>-->
+<!--                <input id="name" type="text" formControlName="name">-->
+<!--            </div>-->
+
+<!--            <div>-->
+<!--                <label for="address">-->
+<!--                    Address-->
+<!--                </label>-->
+<!--                <input id="address" type="text" formControlName="address">-->
+<!--            </div>-->
+<!--            <button class="button" type="submit">Purchase</button>-->
+
+<!--        </form>-->
+    </div>
+</div>
