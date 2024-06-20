@@ -16,7 +16,7 @@ import {
   isIndexedDBAvailable,
   isSafari,
   registerVersion
-} from "./chunk-NZOBJVQ4.js";
+} from "./chunk-GIWOEVAA.js";
 import {
   __async,
   __superGet

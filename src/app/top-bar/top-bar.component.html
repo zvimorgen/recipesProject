@@ -1,13 +1,9 @@
 <div class="food-link">
     <img src="../../assets/food.png" class="food-image">
-    <a [routerLink]="['/']">
-        <h1 class="home-button">Smart Cook</h1>
-    </a>
-    <div>
-        <a [routerLink]="['/cart']">
-            <em class="list-button">Your Ingredient List</em></a>
-    </div>
+    <button (click)="onRecipesButtonClick()">Toggle Recipes</button>
+    <button (click)="onSearchButtonClick()">{{ searchRecipeText }}</button>
 </div>
+
 
 
 <!--<img src="../../assets/food.png" height="578" width="1152"/>-->

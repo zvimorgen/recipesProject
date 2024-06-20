@@ -8,7 +8,7 @@ import {ProductsService} from '../products.service';
 })
 export class LogInComponent implements OnInit{
 
-    @Output() loginSuccess = new EventEmitter<void>();
+    @Output() loginSuccess: EventEmitter<any> = new EventEmitter<any>();
     email: string = '';
     password: string = '';
 
@@ -31,6 +31,7 @@ export class LogInComponent implements OnInit{
                         this.password = '';
                         this.loginSuccess.emit();
                     });
+                this.loginSuccess.emit(true);
             }
         } catch (error) {
             console.error('Error during form submission', error);
@@ -43,7 +44,7 @@ export class LogInComponent implements OnInit{
             if(res) {
                 this.email = '';
                 this.password = '';
-                this.loginSuccess.emit();
+                this.loginSuccess.emit(true);
             }
         } catch (error) {
             console.error('Error signing in', error);
@@ -54,6 +55,7 @@ export class LogInComponent implements OnInit{
         try {
             await this.productsService.logOut();
             console.log("logout clicked");
+            this.loginSuccess.emit(false);
         } catch (error) {
             console.error('Error logging out', error);
         }

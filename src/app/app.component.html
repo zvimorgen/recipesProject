@@ -1,5 +1,48 @@
-<app-top-bar></app-top-bar>
+<app-top-bar
+        [isFeatureEnabled]="isFeatureEnabled">
+<!--        (toggleRecipeTemplate)="handleToggleRecipeTemplate($event)"-->
+<!--        (toggleSearchRecipe)="handleToggleSearchRecipe($event)"-->
+
+</app-top-bar>
 
 <div class="container">
-  <router-outlet></router-outlet>
+    <ng-container *ngIf="!userLoggedIn">
+        <app-log-in (loginSuccess)="onLoginSuccess()"></app-log-in>
+        <p>Please log in to access the application.</p>
+    </ng-container>
+
+    <ng-container *ngIf="showIngredientsList">
+        <app-product-list></app-product-list>
+    </ng-container>
+
+    <ng-container *ngIf="recipeTemplate">
+        <app-recipes-list></app-recipes-list>
+    </ng-container>
+
+    <ng-container *ngIf="searchRecipes">
+        <app-search-recipes></app-search-recipes>
+    </ng-container>
 </div>
+<!--<app-top-bar-->
+<!--        [isFeatureEnabled]="isFeatureEnabled"-->
+<!--        (toggleRecipeTemplate)="handleToggleRecipeTemplate($event)"-->
+<!--        (toggleSearchRecipe)="handleToggleSearchRecipe($event)">-->
+<!--</app-top-bar>-->
+
+<!--<div class="container">-->
+<!--    <ng-container *ngIf="!userLoggedIn">-->
+<!--        <app-log-in></app-log-in>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container *ngIf="showIngredientsList">-->
+<!--        <app-product-list></app-product-list>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container *ngIf="recipeTemplate">-->
+<!--        <app-recipes-list></app-recipes-list>-->
+<!--    </ng-container>-->
+
+<!--    <ng-container *ngIf="searchRecipes">-->
+<!--        <app-search-recipes></app-search-recipes>-->
+<!--    </ng-container>-->
+<!--</div>-->
