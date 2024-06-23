@@ -14,18 +14,24 @@ export class TopBarComponent {
   recipeTemplate: boolean = false;
   searchRecipes: boolean = false;
   searchRecipeText: string = "Custom recipe search";
+  recipesText: string = "List of recipes"
 
   onRecipesButtonClick() {
-    if (this.isFeatureEnabled) {
+
+if(this.recipesText === "List of recipes"){
+  this.recipesText = "main page";
+}else{
+  this.recipesText = "List of recipes";
+}
       this.recipeTemplate = !this.recipeTemplate;
-      this.toggleRecipeTemplate.emit(this.recipeTemplate);
-    }
+      this.toggleRecipeTemplate.emit();
+
   }
 
   onSearchButtonClick() {
-    if (this.isFeatureEnabled) {
+
       this.searchRecipes = !this.searchRecipes;
-      this.toggleSearchRecipe.emit(this.searchRecipes);
+      this.toggleSearchRecipe.emit();
 
       if (this.searchRecipeText === "Custom recipe search") {
         this.searchRecipeText = "Ingredient list";
@@ -33,5 +39,4 @@ export class TopBarComponent {
         this.searchRecipeText = "Custom recipe search";
       }
     }
-  }
 }

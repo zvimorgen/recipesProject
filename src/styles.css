@@ -1,13 +1,15 @@
 /* Global Styles */
 
-* {
-    font-family: 'Roboto', Arial, sans-serif;
-    color: #7f3535;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+/** {*/
+/*    font-family: 'Roboto', Arial, sans-serif;*/
+/*    color: #7f3535;*/
+/*    box-sizing: border-box;*/
+/*    -webkit-font-smoothing: antialiased;*/
+/*    -moz-osx-font-smoothing: grayscale;*/
+/*}*/
+body {
+    margin: 0;
 }
-
 .background-image {
     width: 100%;
     position: relative;
@@ -18,20 +20,12 @@
 
 .food-image {
     width: 100%;
+    /*opacity: 0.8;*/
     filter: brightness(55%);
 }
 
 .food-link {
     position: relative;
-}
-
-.button-container {
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px; /* Adds space between the buttons */
 }
 
 .food-link h1,
@@ -51,13 +45,8 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     top: 20%;
     left: 50%;
-    font-size: 66px;
-    color: #ee3c06;
-}
-
-.home-button {
-    top: 70%;
-    left: 50%;
+    /*font-size: 66px;*/
+    /*color: #ee3c06;*/
 }
 
 .recipes {
@@ -67,22 +56,11 @@
     font-size: 30px;
 }
 
-.list-button {
-    top: 90%;
-    right: -5%;
-    font-size: 34px;
-    color: #ee9a1d;
-    border: 2px solid #eca308;
-    border-radius: 20px;
-    padding: 5px;
-}
-
 .table-container {
     position: absolute;
     top: 80%;
     width: 100%;
     height: 800px;
-    /* height: calc(100% - 50px); /* הורדנו קצת מהגובה כדי להוסיף מרווח מעל לרשימה */
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #d28005 #f8ecd2;
@@ -90,55 +68,20 @@
 }
 
 .recipes-table {
+
     position: absolute;
-    margin: 10% auto; /* 10% מחלקו העליון של הדף */
-    width: 80%; /* הטבלה תופיע במרכז העמוד, עם רווח של 10% מכל צד */
-    overflow-y: auto;
-    scrollbar-width: thin;
-    padding-top: 20px;
-    padding-left: 50px;
-    height: 800px;
-}
-
-.recipes-table .mat-header-cell,
-.mat-cell {
-    font-size: 32px; /* גודל הטקסט */
-    color: blue; /* צבע הטקסט */
-}
-
-.home-button,
-.list-button {
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    top: 10%;
+    left: 50%;
     font-size: 66px;
     color: #ee3c06;
-    border: none;
-    background: none;
-}
 
-body {
-    margin: 0;
-}
-
-router-outlet + * {
-    padding: 0 16px;
-}
-
-/* Text */
-
-h1 {
-    font-size: 42px;
-}
-
-h2 {
-    font-size: 30px;
-}
-
-h1,
-h2 {
-    font-weight: lighter;
-}
-
-p {
-    font-size: 24px;
+    margin: 10% auto; /* 10% מחלקו העליון של הדף */
+    width: 90%; /* הטבלה תופיע במרכז העמוד, עם רווח של 10% מכל צד */
+    height: 800px;
 }
 
 a {
@@ -148,61 +91,25 @@ a {
 }
 
 a:hover {
-    opacity: 0.4;
+    opacity: 0.5;
 }
 
 /* Input */
 
 input {
-    font-size: 24px;
-    border-radius: 2px;
-    padding: 8px;
-    margin-bottom: 16px;
-    border: 1px solid #bdbdbd;
+    font-size: 28px;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 3px solid #7f3535;
 }
 
 label {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: bold;
     margin-bottom: 4px;
     display: block;
     text-transform: uppercase;
-}
-
-/* Button */
-.button,
-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 16px;
-    border-radius: 2px;
-    font-size: 24px;
-    cursor: pointer;
-    background-color: #da8765ff;
-    color: white;
-    border: none;
-}
-
-.button:hover,
-button:hover {
-    opacity: 0.5;
-    font-weight: inherit;
-}
-
-.button:disabled,
-button:disabled {
-    opacity: 0.5;
-    cursor: auto;
-}
-
-.fancy-button {
-    background-color: white;
-    color: #da8765ff;
-}
-
-.fancy-button i.material-icons {
-    color: #da8765ff;
-    padding-right: 4px;
 }
 
 app-top-bar h1 {
@@ -215,9 +122,6 @@ app-top-bar h1 {
     position: absolute;
     top: 80%;
     width: 100%;
-    /* width: 80vw; */
-    /* top: 80%; */
-    /* max-width: 400px; */
     padding: 20px;
 }
 
@@ -226,9 +130,6 @@ app-top-bar h1 {
     position: absolute;
     top: 160%;
     width: 100%;
-    /* width: 80vw; */
-    /* top: 80%; */
-    /* max-width: 400px; */
     padding: 20px;
 }
 
@@ -264,9 +165,9 @@ app-top-bar h1 {
         font-size: 48px;
     }
 
-    .home-button {
-        font-size: 48px;
-    }
+    /*.home-button {*/
+    /*    font-size: 48px;*/
+    /*}*/
 
     .list-button {
         font-size: 24px;
@@ -282,24 +183,24 @@ app-top-bar h1 {
         font-size: 22px;
     }
 
-    p,
-    input,
-    .button,
-    button {
-        font-size: 18px;
-    }
+    /*p,*/
+    /*input,*/
+    /*.button,*/
+    /*button {*/
+    /*    font-size: 18px;*/
+    /*}*/
 
     .on-image {
         font-size: 36px;
     }
 
-    .home-button {
-        font-size: 36px;
-    }
+    /*.home-button {*/
+    /*    font-size: 36px;*/
+    /*}*/
 
-    .list-button {
-        font-size: 18px;
-    }
+    /*.list-button {*/
+    /*    font-size: 18px;*/
+    /*}*/
 }
 
 .table-container::-webkit-scrollbar-thumb {
@@ -365,19 +266,233 @@ app-top-bar h1 {
     font-size: 40px;
 }
 
-.product-details button {
-    background-color: transparent;
-    border: 2px solid orange;
-    padding: 10px 20px;
-    cursor: pointer;
-    color: orange;
-    transition: background-color 0.3s, color 0.3s;
+.recipes-table-container {
+    position: absolute;
+    top: 50%; /* מקטין את התמונה ב50%  */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.product-details button:hover {
-    background-color: orange;
-    color: white;
+.recipe-image {
+    width: 300px;
+    height: 250px;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
+
+.recipe-image:hover {
+    transform: scale(1.1);
+}
+
+
+/* Button */
+.styled-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 20px; /* שינוי המסגרת לעיגול */
+    font-size: 26px;
+    cursor: pointer;
+    background-color: #afa5a5;
+    color: #0a0a0a;
+    border: 2px solid transparent; /* מסגרת עם צבע שקוף */
+    transition: opacity 0.3s ease, border-color 0.3s ease; /* אפקט מעבר */
+    font-weight: bold;
+}
+
+.styled-button:hover {
+    opacity: 0.5; /* שקיפות על מעבר עכבר */
+    border-color: #7f3535; /* שינוי צבע המסגרת לשקוף */
+}
+
+.styled-button:disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+
+/*!* Button *!*/
+/*.button,*/
+/*button {*/
+/*    display: inline-flex;*/
+/*    align-items: center;*/
+/*    padding: 8px 16px;*/
+/*    border-radius: 12px; !* שינוי המסגרת לעיגול *!*/
+/*    font-size: 24px;*/
+/*    cursor: pointer;*/
+/*    background-color: #0850ec;*/
+/*    color: white;*/
+/*    border: 2px solid transparent; !* מסגרת עם צבע שקוף *!*/
+/*    transition: opacity 0.3s ease, border-color 0.3s ease; !* אפקט מעבר *!*/
+/*}*/
+
+/*.button:hover,*/
+/*button:hover {*/
+/*    opacity: 0.5; !* שקיפות על מעבר עכבר *!*/
+/*    border-color: #da8765ff; !* שינוי צבע המסגרת לשקוף *!*/
+/*}*/
+
+/*.button:disabled,*/
+/*button:disabled {*/
+/*    opacity: 0.5;*/
+/*    cursor: auto;*/
+/*}*/
+
+
+
+/*!*Button *!*/
+/*.button,*/
+/*button {*/
+/*    display: inline-flex;*/
+/*    align-items: center;*/
+/*    padding: 8px 16px;*/
+/*    border-radius: 2px;*/
+/*    font-size: 24px;*/
+/*    cursor: pointer;*/
+/*    background-color: #da8765ff;*/
+/*    color: white;*/
+/*    border: none;*/
+/*}*/
+
+/*button:hover {*/
+/*    opacity: 0.5;*/
+/*    font-weight: inherit;*/
+/*}*/
+
+/*.button:disabled,*/
+/*button:disabled {*/
+/*    opacity: 0.5;*/
+/*    cursor: auto;*/
+/*}*/
+
+/*.fancy-button {*/
+/*    background-color: white;*/
+/*    color: #da8765ff;*/
+/*}*/
+
+
+
+/*.button-container {*/
+/*    position: absolute;*/
+/*    top: 90%;*/
+/*    left: 50%;*/
+/*    transform: translateX(-50%);*/
+/*    display: flex;*/
+/*    gap: 10px; !* Adds space between the buttons *!*/
+/*}*/
+
+/*.home-button {*/
+/*    top: 70%;*/
+/*    left: 50%;*/
+/*}*/
+
+
+/*.list-button {*/
+/*    top: 90%;*/
+/*    right: -5%;*/
+/*    font-size: 34px;*/
+/*    color: #ee9a1d;*/
+/*    border: 2px solid #eca308;*/
+/*    border-radius: 20px;*/
+/*    padding: 5px;*/
+/*}*/
+
+/*.home-button,*/
+/*.list-button {*/
+/*    font-size: 66px;*/
+/*    color: #ee3c06;*/
+/*    border: none;*/
+/*    background: none;*/
+/*}*/
+
+
+
+/*router-outlet + * {*/
+/*    padding: 0 16px;*/
+/*}*/
+
+/* Text */
+
+/*h1 {*/
+/*    font-size: 42px;*/
+/*}*/
+
+/*h2 {*/
+/*    font-size: 30px;*/
+/*}*/
+
+/*h1,*/
+/*h2 {*/
+/*    font-weight: lighter;*/
+/*}*/
+
+/*p {*/
+/*    font-size: 80px;*/
+/*}*/
+
+ /*Button */
+.button,
+button {
+display: inline-flex;
+align-items: center;
+padding: 8px 16px;
+border-radius: 2px;
+font-size: 24px;
+cursor: pointer;
+background-color: #da8765ff;
+color: white;
+border: none;
+}
+
+.button:hover,
+button:hover {
+    opacity: 0.5;
+    font-weight: inherit;
+}
+
+.button:disabled,
+button:disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.fancy-button {
+    background-color: white;
+    color: #da8765ff;
+}
+
+/*.fancy-button i.material-icons {*/
+/*    color: #da8765ff;*/
+/*    padding-right: 4px;*/
+/*}*/
+
+/*.product-details button {*/
+/*    background-color: transparent;*/
+/*    border: 2px solid orange;*/
+/*    padding: 10px 20px;*/
+/*    cursor: pointer;*/
+/*    color: orange;*/
+/*    transition: background-color 0.3s, color 0.3s;*/
+/*}*/
+
+/*.product-details button:hover {*/
+/*    background-color: orange;*/
+/*    color: white;*/
+/*}*/
+
+
+
+
+
+
+
+
 
 
 
@@ -743,32 +858,6 @@ app-top-bar h1 {
 /*    background-color: orange;*/
 /*    color: white;*/
 /*}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*!* Global Styles *!*/

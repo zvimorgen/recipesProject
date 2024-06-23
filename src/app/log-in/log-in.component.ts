@@ -8,7 +8,8 @@ import {ProductsService} from '../products.service';
 })
 export class LogInComponent implements OnInit{
 
-    @Output() loginSuccess: EventEmitter<any> = new EventEmitter<any>();
+    // @Output() loginSuccess: EventEmitter<any> = new EventEmitter<any>();
+    @Output() loginSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
     email: string = '';
     password: string = '';
 
@@ -29,9 +30,9 @@ export class LogInComponent implements OnInit{
                     .then(() => {
                         this.email = '';
                         this.password = '';
-                        this.loginSuccess.emit();
+                        this.loginSuccess.emit(true);
                     });
-                this.loginSuccess.emit(true);
+                // this.loginSuccess.emit(true);
             }
         } catch (error) {
             console.error('Error during form submission', error);
@@ -61,6 +62,8 @@ export class LogInComponent implements OnInit{
         }
     }
 }
+
+
 
 
 //   async logIn() {
