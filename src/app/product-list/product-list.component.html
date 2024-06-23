@@ -2,18 +2,19 @@
     <img src="../../assets/Food-Ingredients.jpg" class="background-image"/>
     <div class="on-image" >
         <div>
-            <button class="ingredient-list" style="background: #f1ca75" (click)="showUserList()">{{ showListText }}</button>
-            <button class="logout" style="background: #f1ca75" (click)="logOut()">Logout</button>
+            <button class="buttons styled-button" (click)="showUserList()">{{ showListText }}</button>
+<!--            <button class="buttons styled-button" (click)="logOut()">Logout</button>-->
+<!--            <br>-->
+            <button class="buttons styled-button" (click)="toggleSearchForm()">{{ AddOrRemoveIngredients }}</button>
             <br>
-            <button class="hiddenButton" (click)="toggleSearchForm()">{{ AddOrRemoveIngredients }}</button>
-            <br>
-            <form class="search" (ngSubmit)="onSearchIngredient(searchForm)" #searchForm="ngForm">
-                <input type="text" name="search" ngModel required>
-                <button type="submit" class="search-button">{{ searchButtonText }}</button>
-            </form>
 
             <div [hidden]="!this.showSearchForm">
-                <button class="hiddenButton" (click)="addToDataBase()">Add to your list</button>
+                <button class="buttons styled-button" (click)="addToDataBase()">Add to your list</button>
+
+                <form class="search" (ngSubmit)="onSearchIngredient(searchForm)" #searchForm="ngForm">
+                <input type="text" name="search" ngModel required>
+                <button type="submit" class="search-button styled-button">{{ searchButtonText }}</button>
+            </form><br><br><br><br>
                 <div class="table-container">
                     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 my-table">
                         <ng-container matColumnDef="id">
@@ -42,7 +43,7 @@
                     <label for="ingredient">Ingredient:</label>
                     <input type="text" name="ingredient" [(ngModel)]="ingredient" required>
                     <br>
-                    <button type="submit">Add a new ingredient</button>
+                    <button class="styled-button" type="submit">Add a new ingredient</button>
                 </form>
                 <br>
 
@@ -50,7 +51,7 @@
                     <label for="id">Ingredient id:</label>
                     <input type="text" name="id" [(ngModel)]="id" required>
                     <br>
-                    <button type="submit">Delete an ingredient</button>
+                    <button class="styled-button" type="submit">Delete an ingredient</button>
                 </form>
             </div>
         </div>

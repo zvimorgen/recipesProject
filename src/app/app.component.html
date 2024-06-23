@@ -1,7 +1,9 @@
 <app-top-bar
         [isFeatureEnabled]="isFeatureEnabled"
         (toggleRecipeTemplate)="handleToggleRecipeTemplate()"
-        (toggleSearchRecipe)="handleToggleSearchRecipe()">
+        (toggleSearchRecipe)="handleToggleSearchRecipe()"
+        (logOutButton)="exitUser()"
+>
 </app-top-bar>
 
 <div class="container">

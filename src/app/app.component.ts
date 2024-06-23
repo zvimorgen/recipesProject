@@ -30,7 +30,7 @@ export class AppComponent {
     this.showIngredientsList = event;
   }
 
-  onLogOut(): void {
+  exitUser(): void {
     this.isFeatureEnabled = false;
     this.userLoggedIn = false;
     this.showIngredientsList = false;

@@ -109,12 +109,12 @@ export class ProductListComponent implements OnInit {
 
     }
 
-    async logOut() {
-        await this.productService.logOut();
-        console.log("logout clicked");
-        this.loggedIn = false;
-        this.showSearchForm = true;
-    }
+    // async logOut() {
+    //     await this.productService.logOut();
+    //     console.log("logout clicked");
+    //     this.loggedIn = false;
+    //     this.showSearchForm = true;
+    // }
 
     async addToDataBase() {
         this.isLoading = true;
