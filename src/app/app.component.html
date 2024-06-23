@@ -1,14 +1,13 @@
 <app-top-bar
-        [isFeatureEnabled]="isFeatureEnabled">
-<!--        (toggleRecipeTemplate)="handleToggleRecipeTemplate($event)"-->
-<!--        (toggleSearchRecipe)="handleToggleSearchRecipe($event)"-->
+        [isFeatureEnabled]="isFeatureEnabled"
+        (toggleRecipeTemplate)="handleToggleRecipeTemplate($event)"
+        (toggleSearchRecipe)="handleToggleSearchRecipe($event)">
 
 </app-top-bar>
 
 <div class="container">
     <ng-container *ngIf="!userLoggedIn">
         <app-log-in (loginSuccess)="onLoginSuccess()"></app-log-in>
-        <p>Please log in to access the application.</p>
     </ng-container>
 
     <ng-container *ngIf="showIngredientsList">

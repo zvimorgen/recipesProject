@@ -85,7 +85,7 @@ export class ProductListComponent implements OnInit {
     async deleteFromUserList(ingredient: Product) {
         this.isLoading = true;
         try {
-            // await this.productService.deleteFromUserList(ingredient);
+            await this.productService.deleteFromUserList(ingredient);
             this.ingredients = await this.productService.getUserData();
             this.dataSource.data = this.ingredients;
         } catch (error) {

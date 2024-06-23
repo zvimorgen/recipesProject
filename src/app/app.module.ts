@@ -14,28 +14,30 @@ import { MatIconModule } from '@angular/material/icon'; // ייבוא ספריי
 import { MatButtonModule } from '@angular/material/button'; // ייבוא ספריית כפתורים של Angular Material
 import { RecipesListComponent } from "./recipes-list/recipes-list.component";
 import { SearchRecipesComponent } from "./search-recipes/search-recipes.component";
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonModule,
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonModule,
 
-    RouterModule.forRoot([
-      { path: '**', redirectTo: '', pathMatch: 'full' }
-      // { path: '', component: ProductListComponent },
-      // { path: 'products', component: ProductListComponent },
-      // { path: 'products/:productId', component: ProductDetailsComponent },
-      // { path: 'recipes', component: RecipesListComponent },
-      // { path: 'log-in', component: LogInComponent },
-      // { path: '', redirectTo: '/login', pathMatch: 'full' }, // ניתוב ברירת מחדל לדף ההתחברות
-      // { path: '**', redirectTo: '', pathMatch: 'full' }
-    ]),
-    FormsModule,
-  ],
+        RouterModule.forRoot([
+            {path: '**', redirectTo: '', pathMatch: 'full'}
+            // { path: '', component: ProductListComponent },
+            // { path: 'products', component: ProductListComponent },
+            // { path: 'products/:productId', component: ProductDetailsComponent },
+            // { path: 'recipes', component: RecipesListComponent },
+            // { path: 'log-in', component: LogInComponent },
+            // { path: '', redirectTo: '/login', pathMatch: 'full' }, // ניתוב ברירת מחדל לדף ההתחברות
+            // { path: '**', redirectTo: '', pathMatch: 'full' }
+        ]),
+        FormsModule,
+        NgOptimizedImage,
+    ],
   declarations: [
     AppComponent,
     TopBarComponent,

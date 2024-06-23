@@ -10,6 +10,7 @@ export interface Recipe {
     title: string;
     url: string;
     ingredients: string[];
+    image: string;
 }
 
 @Injectable({
@@ -65,6 +66,7 @@ export class RecipesService {
                             title: data['title'] || '',
                             url: data['url'] || '',
                             ingredients: data['ingredients'] || [],
+                            image: data['image'] || [],
                         });
 
                     } else {
