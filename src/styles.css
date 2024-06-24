@@ -20,7 +20,7 @@ body {
 
 .food-image {
     width: 100%;
-    height: 600px;
+    height: 300px;
     /*opacity: 0.8;*/
     filter: brightness(55%);
 }
@@ -65,6 +65,20 @@ body {
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #d28005 #f8ecd2;
+    padding-top: 20px;
+}
+.recipes-table-container {
+    position: absolute;
+    top: 15%; /* מרחק של 10% מהחלק העליון */
+    left: 50%; /* מיקום באמצע הדף מבחינת רוחב */
+    transform: translateX(-50%); /* התאמה למיקום האמצע */
+    width: 80%; /* רוחב של 80% */
+}
+
+.recipes-table {
+    width: 100%;
+    /*overflow-y: auto;*/
+    scrollbar-width: thin;
     padding-top: 20px;
 }
 
@@ -129,7 +143,7 @@ app-top-bar h1 {
 .delete {
     border: 3px solid #7f3535;
     position: absolute;
-    top: 160%;
+    top: 350%;
     width: 100%;
     padding: 20px;
 }
@@ -274,12 +288,6 @@ app-top-bar h1 {
 /*    font-size: 40px;*/
 /*}*/
 
-.recipes-table-container {
-    position: absolute;
-    top: 50%; /* מקטין את התמונה ב50%  */
-    left: 50%;
-    transform: translateX(-50%);
-}
 
 .recipe-image {
     width: 300px;
@@ -336,7 +344,7 @@ app-top-bar h1 {
 }
 .button-container {
     position: absolute;
-    top: 85%;
+    top: 70%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -348,6 +356,107 @@ app-top-bar h1 {
     top: 70%;
     left: 50%;
 }
+
+
+
+.food-link {
+    position: relative;
+    text-align: center;
+}
+
+.background-image {
+    width: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+}
+
+
+
+.mat-header-cell, .mat-cell {
+    font-size: 32px; /* גודל הטקסט */
+    color: blue; /* צבע הטקסט */
+}
+
+.mat-elevation-z8 {
+    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12);
+}
+
+.my-table {
+    width: 100%; /* התאמת הרוחב של הטבלה */
+}
+
+.custom-row:nth-child(odd) {
+    background-color: #f1ca75; /* צבע רקע לשורות אי-זוגיות */
+}
+
+.custom-row:nth-child(even) {
+    background-color: #eca308; /* צבע רקע לשורות זוגיות */
+}
+
+.custom-row:hover {
+    background-color: #fdeac4; /* צבע רקע כשמרחפים מעל שורה */
+}
+
+.custom-header-row {
+    background-color: #e3a18d !important; /* צבע רקע לכותרת */
+    font-size: 28px;
+    font-weight: bold; /* גופן עבה */
+}
+
+.delete-cell {
+    display: flex;
+    justify-content: flex-end; /* יישור התוכן לסוף התא */
+    align-items: center;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #6b6b6b; /* צבע סרגל של פס גלילה */
+}
+
+/*Button */
+.button,
+button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 2px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #da8765ff;
+    color: white;
+    border: none;
+}
+
+.button:hover,
+button:hover {
+    opacity: 0.5;
+    font-weight: inherit;
+}
+
+.button:disabled,
+button:disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.fancy-button {
+    background-color: white;
+    color: #da8765ff;
+}
+
+.isntDataSearch{
+    top: 10%;
+    left: 35%;
+    position: absolute;
+    font-size: 56px;
+    color: #ee3c06;
+    font-weight: bold;
+}
+
+
+
 
 /*!* Button *!*/
 /*.button,*/
@@ -456,36 +565,11 @@ app-top-bar h1 {
 /*    font-size: 80px;*/
 /*}*/
 
- /*Button */
-.button,
-button {
-display: inline-flex;
-align-items: center;
-padding: 8px 16px;
-border-radius: 2px;
-font-size: 24px;
-cursor: pointer;
-background-color: #da8765ff;
-color: white;
-border: none;
-}
 
-.button:hover,
-button:hover {
-    opacity: 0.5;
-    font-weight: inherit;
-}
 
-.button:disabled,
-button:disabled {
-    opacity: 0.5;
-    cursor: auto;
-}
 
-.fancy-button {
-    background-color: white;
-    color: #da8765ff;
-}
+
+
 
 /*.fancy-button i.material-icons {*/
 /*    color: #da8765ff;*/
