@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {CartService} from "../cart.service";
 import {ProductsService, Product} from "../products.service";
 import {NgForm} from "@angular/forms";
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 @Component({
     selector: 'app-product-list',
     templateUrl: './product-list.component.html',
