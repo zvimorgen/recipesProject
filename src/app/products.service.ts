@@ -4,7 +4,7 @@ import {initializeApp} from 'firebase/app';
 
 import {
     collection, getFirestore,
-     deleteDoc, doc, onSnapshot,
+    deleteDoc, doc, onSnapshot,
     setDoc, getDoc, updateDoc
 } from 'firebase/firestore';
 import {
@@ -30,11 +30,20 @@ export class ProductsService {
     // @ts-ignore
     private auth: ReturnType<typeof getAuth>;
     private user: any = null;
+    private updatedCategoryData: number = 0;
 
 
     constructor() {
-        this.connectDataBase().then(r =>
-            console.log("connected"));
+        // await this.connectDataBase()
+        //       console.log("connected");
+        this.connectDataBase()
+            .then(() => {
+                console.log("connected");
+            })
+            .catch((error) => {
+                console.error('Error connecting to database:', error);
+            });
+
     }
 
     async connectDataBase(): Promise<void> {
@@ -111,6 +120,10 @@ export class ProductsService {
                 email: this.user.email,
                 password: password,
                 createdAt: new Date(),
+                cookies: 0,
+                "meat food": 0,
+                "dairy food": 0,
+
             };
 
             await setDoc(doc(this.db, "users", this.user.uid), userData);
@@ -160,8 +173,7 @@ export class ProductsService {
 
             // קבלת נתוני המשתמש
             const userData = await this.getUserData();
-
-            console.log('User data:', userData);
+            // console.log('User data:', userData);
 
             // רשימת רכיבים מעודכנת
             const ingredients = userData || [];
@@ -255,7 +267,7 @@ export class ProductsService {
                 // const ingredients: Product[] = [];
                 const productsData = await this.getProducts() || [];
 
-                const filteredProducts =  productsData.filter((product: Product) => product.id.includes(toSearch));
+                const filteredProducts = productsData.filter((product: Product) => product.id.includes(toSearch));
 
                 console.log(filteredProducts);
                 resolve(filteredProducts);
@@ -266,30 +278,22 @@ export class ProductsService {
         });
     }
 
+    async updateFiled(category: string, value: number): Promise<void> {
 
+        const userDocRef = doc(this.db, 'users', this.user.uid);
+        const userDocSnap = await getDoc(userDocRef);
 
+        if (userDocSnap.exists()) {
+            const userData = userDocSnap.data();
 
-    // async searchIngredient(toSearch: string): Promise<Product[]> {
-    //     return new Promise<Product[]>(async (resolve, reject) => {
-    //         try {
-    //             const colRef = collection(this.db, 'Ingredients');
-    //             const q = query(colRef, where("title", "==", toSearch));
-    //
-    //             console.log(q)
-    //             const querySnapshot = await getDocs(q);
-    //             const ingredients: Product[] = [];
-    //
-    //             querySnapshot.forEach((doc) => {
-    //                 console.log(doc.id, " => ", doc.data());
-    //                 ingredients.push({...doc.data(), id: doc.id} as Product);
-    //             });
-    //
-    //             console.log(ingredients);
-    //             resolve(ingredients);
-    //         } catch (error) {
-    //             console.error("Error searching ingredients: ", error);
-    //             reject(error);
-    //         }
-    //     });
-    // }
+            if (userData) {
+                const categoryData = userData[category];
+                this.updatedCategoryData = categoryData + value;
+                console.log('Updated category data:', this.updatedCategoryData);
+            }
+
+            await setDoc(doc(this.db, 'users', this.user.uid), {[category]: this.updatedCategoryData}, {merge: true});
+            console.log('Additional settings added successfully!');
+        }
+    }
 }

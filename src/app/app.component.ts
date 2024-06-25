@@ -13,16 +13,20 @@ export class AppComponent {
   searchRecipes: boolean = false;
 
 
-  handleToggleRecipeTemplate() {
-    this.showIngredientsList =  !this.showIngredientsList;
+  handleToggleRecipeTemplate(event: boolean):void {
+
     this.recipeTemplate = !this.recipeTemplate;
+    this.showIngredientsList = !this.recipeTemplate;
+    this.searchRecipes = false;
 
   }
 
-  handleToggleSearchRecipe() {
+  handleToggleSearchRecipe(event: boolean):void {
 
-    this.showIngredientsList =  !this.showIngredientsList;
     this.searchRecipes = !this.searchRecipes;
+    this.showIngredientsList = !this.searchRecipes;
+    this.recipeTemplate = false;
+
   }
   onLoginSuccess(event: boolean):void {
     this.isFeatureEnabled = event;

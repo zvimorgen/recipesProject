@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {initializeApp, FirebaseApp} from 'firebase/app';
 import {
-    collection, getFirestore, onSnapshot, QuerySnapshot, DocumentData,
+    collection, getFirestore, onSnapshot, QuerySnapshot, DocumentData, setDoc, doc,
 } from 'firebase/firestore';
 import {getAuth} from 'firebase/auth';
+import {Product} from "./products.service";
 
 export interface Recipe {
     id?: string;
@@ -11,6 +12,7 @@ export interface Recipe {
     url: string;
     ingredients: string[];
     image: string;
+    category: string;
 }
 
 @Injectable({
@@ -54,12 +56,13 @@ export class RecipesService {
     async getRecipes(): Promise<Recipe[]> {
         return new Promise<Recipe[]>((resolve, reject) => {
             const colRef = collection(this.db, 'Recipes');
-            console.log(colRef)
+
             // Listen to real-time updates on the collection
             onSnapshot(colRef, (snapshot: QuerySnapshot<DocumentData>) => {
                 this.recipes = [];
                 snapshot.docs.forEach((doc) => {
                     const data = doc.data();
+                    console.log(data)
                     if (data && typeof data === 'object') {
                         this.recipes.push({
                             id: doc.id,
@@ -67,8 +70,8 @@ export class RecipesService {
                             url: data['url'] || '',
                             ingredients: data['ingredients'] || [],
                             image: data['image'] || [],
+                            category: data['category'] || [],
                         });
-
                     } else {
                         console.error('Invalid or missing data in document:', doc.id);
                     }
@@ -80,7 +83,9 @@ export class RecipesService {
             });
         });
     }
+
 }
+
 
 // import { Injectable } from '@angular/core';
 // import { initializeApp } from 'firebase/app';

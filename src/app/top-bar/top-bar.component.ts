@@ -12,6 +12,7 @@ export class TopBarComponent {
     }
 
     @Input() isFeatureEnabled: boolean = false;
+    // @Output() toggleRecipeTemplate: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() toggleRecipeTemplate: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() toggleSearchRecipe: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() logOutButton: EventEmitter<any> = new EventEmitter<any>();
@@ -23,25 +24,31 @@ export class TopBarComponent {
 
     onRecipesButtonClick() {
 
-        if (this.recipesText === "List of recipes") {
-            this.recipesText = "main page";
-        } else {
-            this.recipesText = "List of recipes";
-        }
-        this.recipeTemplate = !this.recipeTemplate;
-        this.toggleRecipeTemplate.emit();
+        if (!this.searchRecipes) {
+            if (this.recipesText === "List of recipes") {
+                this.recipesText = "main page";
+            } else {
+                this.recipesText = "List of recipes";
+            }
 
+            this.recipeTemplate = !this.recipeTemplate;
+            this.searchRecipeText = "Custom recipe search";
+            this.toggleRecipeTemplate.emit(this.recipeTemplate);
+        }
     }
 
     onSearchButtonClick() {
 
-        this.searchRecipes = !this.searchRecipes;
-        this.toggleSearchRecipe.emit();
+        if (!this.recipeTemplate) {
+            if (this.searchRecipeText === "Custom recipe search") {
+                this.searchRecipeText = "Ingredient list";
+            } else {
+                this.searchRecipeText = "Custom recipe search";
+            }
 
-        if (this.searchRecipeText === "Custom recipe search") {
-            this.searchRecipeText = "Ingredient list";
-        } else {
-            this.searchRecipeText = "Custom recipe search";
+            this.searchRecipes = !this.searchRecipes;
+            this.recipesText = "List of recipes";
+            this.toggleSearchRecipe.emit(this.searchRecipes);
         }
     }
 
