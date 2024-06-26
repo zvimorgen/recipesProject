@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button'; // ייבוא ספר
 import { RecipesListComponent } from "./recipes-list/recipes-list.component";
 import { SearchRecipesComponent } from "./search-recipes/search-recipes.component";
 import {NgOptimizedImage} from "@angular/common";
+import { NguCarouselModule } from '@ngu/carousel';
 
 @NgModule({
     imports: [
@@ -24,6 +25,7 @@ import {NgOptimizedImage} from "@angular/common";
         MatTableModule,
         MatIconModule,
         MatButtonModule,
+        NguCarouselModule,
 
         RouterModule.forRoot([
             {path: '**', redirectTo: '', pathMatch: 'full'}
