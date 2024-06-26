@@ -12,10 +12,10 @@ import { LogInComponent } from "./log-in/log-in.component";
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon'; // ייבוא ספריית הסמלים של Angular Material
 import { MatButtonModule } from '@angular/material/button'; // ייבוא ספריית כפתורים של Angular Material
-import { RecipesListComponent } from "./recipes-list/recipes-list.component";
-import { SearchRecipesComponent } from "./search-recipes/search-recipes.component";
-import {NgOptimizedImage} from "@angular/common";
-import { NguCarouselModule } from '@ngu/carousel';
+// import { RecipesListComponent } from "./recipes-list/recipes-list.component";
+// import { SearchRecipesComponent } from "./search-recipes/search-recipes.component";
+// import {NgOptimizedImage} from "@angular/common";
+// import { NguCarouselModule } from '@ngu/carousel';
 
 @NgModule({
     imports: [
