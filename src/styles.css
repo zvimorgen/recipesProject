@@ -192,12 +192,14 @@ app-top-bar h1 {
     font-size: 34px;
     font-weight: bold;
 }
+
 .my-table .mat-header-cell {
     text-align: center; /* יישור טקסט לאמצע אופקית */
     display: flex;
     justify-content: center; /* יישור לאמצע אופקית */
     align-items: center; /* יישור לאמצע אנכית */
 }
+
 /*.custom-header-row {*/
 /*    background-color: #e3a18d !important;*/
 /*    font-size: 34px;*/
@@ -218,13 +220,14 @@ app-top-bar h1 {
     align-items: center;
 }
 
-.like-cell {
-    justify-content: center;
-}
-.svg{
+/*.like-cell {*/
+/*    justify-content: center;*/
+/*}*/
+.svg {
     width: 80px;
     display: flex;
 }
+
 .svg-icon {
     transition: fill 0.3s;
 }
@@ -240,17 +243,19 @@ app-top-bar h1 {
 /*----------delete add--------------*/
 .add {
     border: 3px solid #7f3535;
-    position: absolute;
-    top: 80%;
-    width: 100%;
+    /*position: absolute;*/
+    /*top: 30%;*/
+    /*left: -75%;*/
+    width: 500px;
     padding: 20px;
 }
 
 .delete {
     border: 3px solid #7f3535;
     position: absolute;
-    top: 350%;
-    width: 100%;
+    /*top: 350%;*/
+    /*left: -75%;*/
+    width: 500px;
     padding: 20px;
 }
 
@@ -332,7 +337,7 @@ app-top-bar h1 {
     display: inline-flex;
     align-items: center;
     padding: 8px 16px;
-    margin: 10px;
+    margin: 5px;
     border-radius: 20px; /* שינוי המסגרת לעיגול */
     font-size: 26px;
     cursor: pointer;
@@ -377,139 +382,108 @@ app-top-bar h1 {
     font-weight: inherit;
 }
 
+.on-food-image {
+    position: absolute;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+}
 
-/*.button:disabled,*/
-/*button:disabled {*/
-/*    opacity: 0.5;*/
-/*    cursor: auto;*/
+.carousel {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap into new rows */
+    gap: 20px; /* Adjust as needed for spacing between items */
+    justify-content: space-between; /* Distribute items evenly */
+}
+
+.carousel-item {
+    /*flex: 1 0 calc(27%); !* One-third width minus gap *!*/
+    /*flex: content; !* One-third width minus gap *!*/
+    /*max-width: calc(27%); !* One-third width minus gap *!*/
+    margin: 20px; /* Margin around each item */
+    padding: 20px; /* Padding inside each item */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow */
+    background-color: #f8ecd2; /* Background color */
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-item:hover {
+    transform: scale(1.05); /* Hover effect */
+}
+
+.like-dislike {
+    position: absolute;
+    bottom: 10px; /* מרחק מתחת לתוכן הכרטיסייה */
+    left: 70px; /* מרחק משמאל לתוכן הכרטיסייה */
+    right: 70px; /* מרחק מימין לתוכן הכרטיסייה */
+    display: flex;
+    align-items: center; /* יישור אנכי */
+    justify-content: space-between; /* מרחק שווה בין האייקונים */
+}
+
+.like-dislike a {
+    display: flex;
+    align-items: center; /* יישור אנכי לאייקון */
+    text-decoration: none; /* ללא קישור */
+    color: #7f3535; /* צבע טקסט */
+    transition: fill 0.3s; /* אנימציה עבור הצבע */
+}
+
+.svg-icon {
+    width: 30px; /* גודל האייקון */
+    height: 30px;
+}
+
+.svg-icon.active {
+    fill: red; /* צבע האייקון במצב של "אהבתי" */
+}
+
+.like-dislike a:hover .svg-icon {
+    fill: red; /* צבע האייקון בעת לחיצה */
+}
+
+.carousel-item ul {
+    list-style-type: none; /* הסרת סימון */
+    padding: 0; /* הסרת מרווחים מצדדים */
+}
+
+.carousel-item li {
+    text-align: center; /* יישור למרכז עבור פריטי הרשימה */
+    margin-bottom: 10px; /* ייצוב מרווחים בין פריטי הרשימה */
+}
+
+
+/*.carousel {*/
+/*    width: 100%;*/
+/*    margin: 0 auto;*/
 /*}*/
 
-/*.button,*/
-/*button {*/
-/*    display: inline-flex;*/
-/*    align-items: center;*/
-/*    padding: 8px 16px;*/
-/*    border-radius: 2px;*/
-/*    font-size: 24px;*/
-/*    cursor: pointer;*/
-/*    background-color: #da8765ff;*/
-/*    color: white;*/
-/*    border: none;*/
+/*.carousel-item {*/
+/*    margin: 0 5px;*/
 /*}*/
 
-
-/*!*----------Button--------------*!*/
-
-/*.fancy-button {*/
-/*    background-color: white;*/
-/*    color: #da8765ff;*/
-/*}*/
-
-/*.styled-button {*/
-/*    display: inline-flex;*/
-/*    align-items: center;*/
-/*    padding: 8px 16px;*/
-/*    margin: 10px;*/
-/*    border-radius: 20px; !* שינוי המסגרת לעיגול *!*/
-/*    font-size: 26px;*/
-/*    cursor: pointer;*/
-/*    background-color: #afa5a5;*/
-/*    color: #0a0a0a;*/
-/*    border: 2px solid transparent; !* מסגרת עם צבע שקוף *!*/
-/*    transition: opacity 0.3s ease, border-color 0.3s ease; !* אפקט מעבר *!*/
-/*    font-weight: bold;*/
-/*}*/
-
-/*.styled-button:hover {*/
-/*    opacity: 0.5; !* שקיפות על מעבר עכבר *!*/
-/*    border-color: #7f3535; !* שינוי צבע המסגרת לשקוף *!*/
-/*}*/
-
-/*.styled-button:disabled {*/
-/*    opacity: 0.5;*/
-/*    cursor: auto;*/
-/*}*/
-/*.buttons{*/
-/*    background-color: #f1ca75;*/
-/*    color: #131313;*/
-/*}*/
-/*.button-container {*/
-/*    position: absolute;*/
-/*    top: 70%;*/
-/*    left: 50%;*/
-/*    transform: translateX(-50%);*/
+/*.slick-prev, .slick-next {*/
+/*    z-index: 1;*/
+/*    background-color: #ddd;*/
+/*    border-radius: 50%;*/
+/*    width: 30px;*/
+/*    height: 30px;*/
 /*    display: flex;*/
-/*    gap: 10px; !* Adds space between the buttons *!*/
-
-/*}*/
-/*.button,*/
-/*button {*/
-/*    display: inline-flex;*/
-/*    align-items: center;*/
-/*    padding: 8px 16px;*/
-/*    border-radius: 2px;*/
-/*    font-size: 24px;*/
-/*    cursor: pointer;*/
-/*    background-color: #da8765ff;*/
-/*    color: white;*/
-/*    border: none;*/
-/*}*/
-
-/*.button:hover,*/
-/*button:hover {*/
-/*    opacity: 0.5;*/
-/*    font-weight: inherit;*/
-/*}*/
-
-/*.button:disabled,*/
-/*button:disabled {*/
-/*    opacity: 0.5;*/
-/*    cursor: auto;*/
-/*}*/
-/*----------search recipes--------------*/
-
-
-/*.product-details {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
 /*    align-items: center;*/
 /*    justify-content: center;*/
-/*    text-align: center;*/
-/*    color: orange;*/
-/*    margin-top: 20vh; !* יוצר מרווח בגובה של 20% מגובה העמוד *!*/
 /*}*/
 
-/*.product-details h2,*/
-/*.product-details h3,*/
-/*.product-details button {*/
-/*    color: #ee3c06; !* Ensure text and button text are orange *!*/
-/*    font-size: 40px;*/
+/*.slick-prev {*/
+/*    left: -35px;*/
 /*}*/
 
-
-/*.recipes {*/
-/*    top: 90%;*/
-/*    left: 50%;*/
-/*    color: #ccec8b;*/
-/*    font-size: 30px;*/
-/*}*/
-
-/*.table-container {*/
-/*    position: absolute;*/
-/*    top: 80%;*/
-/*    width: 100%;*/
-/*    height: 1000px;*/
-/*    overflow-y: auto;*/
-/*    scrollbar-width: thin;*/
-/*    scrollbar-color: #d28005 #f8ecd2;*/
-/*    padding-top: 20px;*/
-/*}*/
-/*.recipes-table-container {*/
-/*    position: absolute;*/
-/*    top: 15%; !* מרחק של 10% מהחלק העליון *!*/
-/*    left: 50%; !* מיקום באמצע הדף מבחינת רוחב *!*/
-/*    transform: translateX(-50%); !* התאמה למיקום האמצע *!*/
-/*    width: 80%; !* רוחב של 80% *!*/
+/*.slick-next {*/
+/*    right: -35px;*/
 /*}*/
 
 /*.recipe-image {*/
@@ -529,80 +503,108 @@ app-top-bar h1 {
 /*    transform: scale(1.1);*/
 /*}*/
 
-
-/*.recipes-table {*/
-
+/*.like-dislike {*/
 /*    position: absolute;*/
-/*    transform: translate(-50%, -50%);*/
-/*    !*font-weight: bold;*!*/
-/*    text-align: center;*/
-/*    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);*/
-/*    top: 15%;*/
-/*    left: 50%;*/
-/*    font-size: 66px;*/
-/*    color: #ee3c06;*/
-/*    margin: 10% auto; !* 10% מחלקו העליון של הדף *!*/
-/*    width: 100%;*/
-/*    height: 800px;*/
-/*    scrollbar-width: thin;*/
+/*    bottom: 10px; !* מרחק מתחת לתוכן הכרטיסייה *!*/
+/*    left: 70px; !* מרחק משמאל לתוכן הכרטיסייה *!*/
+/*    right: 70px; !* מרחק מימין לתוכן הכרטיסייה *!*/
+/*    display: flex;*/
+/*    align-items: center; !* יישור אנכי *!*/
+/*    justify-content: space-between; !* מרחק שווה בין האייקונים *!*/
 /*}*/
 
-/*.table-container::-webkit-scrollbar-thumb {*/
-/*    background-color: #6b6b6b; !* צבע סרגל של פס גלילה *!*/
+/*.like-dislike a {*/
+/*    display: flex;*/
+/*    align-items: center; !* יישור אנכי לאייקון *!*/
+/*    text-decoration: none; !* ללא קישור *!*/
+/*    color: #7f3535; !* צבע טקסט *!*/
+/*    transition: fill 0.3s; !* אנימציה עבור הצבע *!*/
 /*}*/
 
-/*.my-table {*/
-/*    width: 100%; !* התאמת הרוחב של הטבלה *!*/
+/*.svg-icon {*/
+/*    width: 30px; !* גודל האייקון *!*/
+/*    height: 30px;*/
 /*}*/
 
-
-/*.custom-row:nth-child(odd) {*/
-/*    background-color: #f1ca75; !* צבע רקע לשורות אי-זוגיות *!*/
-/*    font-size: 30px;*/
-/*    margin: 1px;*/
-/*    padding: 5px;*/
+/*.svg-icon.active {*/
+/*    fill: red; !* צבע האייקון במצב של "אהבתי" *!*/
 /*}*/
 
-/*.custom-row:nth-child(even) {*/
-/*    background-color: #eca308; !* צבע רקע לשורות זוגיות *!*/
-/*    font-size: 30px;*/
-/*    margin: 1px;*/
-/*    padding: 5px;*/
+/*.like-dislike a:hover .svg-icon {*/
+/*    fill: red; !* צבע האייקון בעת לחיצה *!*/
 /*}*/
 
-/*!* אופציונלי: שינוי צבע רקע כשמרחפים מעל שורה *!*/
-/*.custom-row:hover {*/
-/*    background-color: #fdeac4;*/
+/*.carousel {*/
+/*    display: flex;*/
+/*    !*overflow: hidden;*!*/
+/*    !*position: absolute;*!*/
+/*    flex-wrap: wrap; !* Allow items to wrap into new rows *!*/
+/*    gap: 20px; !* Adjust as needed for spacing between items *!*/
 /*}*/
 
-/*.my-table .custom-header-row {*/
-/*    background-color: #e3a18d !important; !* צבע רקע לכותרת *!*/
-/*    font-size: 44px;*/
-/*    font-weight: bold; !* גופן עבה *!*/
+/*!*.carousel-item {*!*/
+/*!*    display: inline-block;*!*/
+/*!*    vertical-align: top;*!*/
+/*!*    white-space: normal;*!*/
+/*!*    width: 400px; !* גודל קבוע של כל שקופית בקרוסלה *!*!*/
+/*!*    border-radius: 8px; !* מסגרת מעוגלת *!*!*/
+/*!*    background-color: #f8ecd2; !* רקע בהיר *!*!*/
+/*!*    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); !* צל מתאים *!*!*/
+/*!*    padding: 20px; !* רווח בתוך השקופית *!*!*/
+/*!*    margin: 10px; !* מרווח בין השקופיות *!*!*/
+/*!*    position: relative; !* עבור האייקונים *!*!*/
+/*!*}*!*/
+/*.carousel-item {*/
+/*    flex: 1 0 calc(28% - 15px); !* One-third width minus gap *!*/
+/*    max-width: calc(28% - 15px); !* One-third width minus gap *!*/
+/*    margin: 20px; !* Margin around each item *!*/
+/*    padding: 20px; !* Padding inside each item *!*/
+/*    border-radius: 8px; !* Rounded corners *!*/
+/*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); !* Box shadow *!*/
+/*    background-color: #f8ecd2; !* Background color *!*/
+/*    transition: transform 0.3s ease-in-out;*/
 /*}*/
 
-/*.my-table {*/
-/*    width: 100%; !* התאמת הרוחב של הטבלה *!*/
+/*.carousel-item:hover {*/
+/*    transform: scale(1.05); !* Hover effect *!*/
 /*}*/
 
-/*.custom-row:nth-child(odd) {*/
-/*    background-color: #f1ca75; !* צבע רקע לשורות אי-זוגיות *!*/
+/*.like-dislike {*/
+/*    position: absolute;*/
+/*    bottom: 10px; !* מרחק מתחת לתוכן הכרטיסייה *!*/
+/*    left: 70px; !* מרחק משמאל לתוכן הכרטיסייה *!*/
+/*    right: 70px; !* מרחק מימין לתוכן הכרטיסייה *!*/
+/*    display: flex;*/
+/*    align-items: center; !* יישור אנכי *!*/
+/*    justify-content: space-between; !* מרחק שווה בין האייקונים *!*/
 /*}*/
 
-/*.custom-row:nth-child(even) {*/
-/*    background-color: #eca308; !* צבע רקע לשורות זוגיות *!*/
+/*.like-dislike a {*/
+/*    display: flex;*/
+/*    align-items: center; !* יישור אנכי לאייקון *!*/
+/*    text-decoration: none; !* ללא קישור *!*/
+/*    color: #7f3535; !* צבע טקסט *!*/
+/*    transition: fill 0.3s; !* אנימציה עבור הצבע *!*/
 /*}*/
 
-/*.custom-row:hover {*/
-/*    background-color: #fdeac4; !* צבע רקע כשמרחפים מעל שורה *!*/
+/*.svg-icon {*/
+/*    width: 30px; !* גודל האייקון *!*/
+/*    height: 30px;*/
 /*}*/
 
-/*.custom-header-row {*/
-/*    background-color: #e3a18d !important; !* צבע רקע לכותרת *!*/
-/*    font-size: 28px;*/
-/*    font-weight: bold; !* גופן עבה *!*/
-/*}*/
-/*.table-container::-webkit-scrollbar-thumb {*/
-/*    background-color: #6b6b6b; !* צבע סרגל של פס גלילה *!*/
+/*.svg-icon.active {*/
+/*    fill: red; !* צבע האייקון במצב של "אהבתי" *!*/
 /*}*/
 
+/*.like-dislike a:hover .svg-icon {*/
+/*    fill: red; !* צבע האייקון בעת לחיצה *!*/
+/*}*/
+/*.carousel-item ul {*/
+/*    list-style-type: none; !* הסרת סימון *!*/
+/*    padding: 0; !* הסרת מרווחים מצדדים *!*/
+/*}*/
+
+/*.carousel-item li {*/
+/*    text-align: center; !* יישור למרכז עבור פריטי הרשימה *!*/
+/*    margin-bottom: 10px; !* ייצוב מרווחים בין פריטי הרשימה *!*/
+/*}*/

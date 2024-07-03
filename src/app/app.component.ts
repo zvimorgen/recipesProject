@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faHourglassEmpty } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,8 @@ export class AppComponent {
   showIngredientsList: boolean = false;
   recipeTemplate: boolean = false;
   searchRecipes: boolean = false;
+  isLoading: boolean = false;
+  faHourglassEmpty = faHourglassEmpty;
 
 
   handleToggleRecipeTemplate(event: boolean):void {
@@ -38,6 +41,10 @@ export class AppComponent {
     this.isFeatureEnabled = false;
     this.userLoggedIn = false;
     this.showIngredientsList = false;
+  }
+  onLoading(event: boolean){
+
+    this.isLoading = event;
   }
 
 }

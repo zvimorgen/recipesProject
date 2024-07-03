@@ -15,7 +15,8 @@ import { MatButtonModule } from '@angular/material/button'; // ייבוא ספר
 import { RecipesListComponent } from "./recipes-list/recipes-list.component";
 import { SearchRecipesComponent } from "./search-recipes/search-recipes.component";
 import {NgOptimizedImage} from "@angular/common";
-import { NguCarouselModule } from '@ngu/carousel';
+import {SlickCarouselModule} from "ngx-slick-carousel";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     imports: [
@@ -25,20 +26,14 @@ import { NguCarouselModule } from '@ngu/carousel';
         MatTableModule,
         MatIconModule,
         MatButtonModule,
-        NguCarouselModule,
+        FontAwesomeModule,
 
         RouterModule.forRoot([
             {path: '**', redirectTo: '', pathMatch: 'full'}
-            // { path: '', component: ProductListComponent },
-            // { path: 'products', component: ProductListComponent },
-            // { path: 'products/:productId', component: ProductDetailsComponent },
-            // { path: 'recipes', component: RecipesListComponent },
-            // { path: 'log-in', component: LogInComponent },
-            // { path: '', redirectTo: '/login', pathMatch: 'full' }, // ניתוב ברירת מחדל לדף ההתחברות
-            // { path: '**', redirectTo: '', pathMatch: 'full' }
         ]),
         FormsModule,
         NgOptimizedImage,
+        SlickCarouselModule,
     ],
   declarations: [
     AppComponent,

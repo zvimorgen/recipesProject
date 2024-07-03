@@ -2,15 +2,11 @@
     <img src="../../assets/Food-Ingredients.jpg" alt="foodImage" class="background-image"/>
     <div class="on-image" >
         <div>
-            <button class="buttons styled-button" (click)="showUserList()">{{ showListText }}</button>
-<!--            <button class="buttons styled-button" (click)="logOut()">Logout</button>-->
-<!--            <br>-->
+            <button *ngIf="showSearchForm" class="buttons styled-button" (click)="showUserList()">{{ showListText }}</button>
             <button class="buttons styled-button" (click)="toggleSearchForm()">{{ AddOrRemoveIngredients }}</button>
             <br>
 
             <div [hidden]="!this.showSearchForm">
-<!--                <button class="buttons styled-button" (click)="addToDataBase()">Add to your list</button>-->
-
                 <form class="search" (ngSubmit)="onSearchIngredient(searchForm)" #searchForm="ngForm">
                 <input type="text" name="search" ngModel required>
                 <button type="submit" class="search-button styled-button">{{ searchButtonText }}</button>
@@ -61,7 +57,4 @@
         <app-log-in (loginSuccess)="onLoginSuccess()"></app-log-in>
     </ng-template>
 
-<!--    <div *ngIf="isLoading" class="loading-overlay">-->
-<!--        <ng-md-icon icon="hourglass_empty" style="fill: blue" size="350px"></ng-md-icon>-->
-<!--    </div>-->
 </div>

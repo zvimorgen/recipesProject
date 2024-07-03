@@ -12,7 +12,6 @@ export class TopBarComponent {
     }
 
     @Input() isFeatureEnabled: boolean = false;
-    // @Output() toggleRecipeTemplate: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() toggleRecipeTemplate: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() toggleSearchRecipe: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() logOutButton: EventEmitter<any> = new EventEmitter<any>();
@@ -21,18 +20,24 @@ export class TopBarComponent {
     searchRecipes: boolean = false;
     searchRecipeText: string = "Custom recipe search";
     recipesText: string = "List of recipes"
+    recipesSearch: boolean = true;
+    recipesList: boolean = true;
+
 
     onRecipesButtonClick() {
 
         if (!this.searchRecipes) {
             if (this.recipesText === "List of recipes") {
                 this.recipesText = "main page";
+                this.recipesSearch = false;
             } else {
                 this.recipesText = "List of recipes";
+                this.recipesSearch = true;
             }
 
             this.recipeTemplate = !this.recipeTemplate;
             this.searchRecipeText = "Custom recipe search";
+
             this.toggleRecipeTemplate.emit(this.recipeTemplate);
         }
     }
@@ -41,9 +46,12 @@ export class TopBarComponent {
 
         if (!this.recipeTemplate) {
             if (this.searchRecipeText === "Custom recipe search") {
-                this.searchRecipeText = "Ingredient list";
+                this.searchRecipeText = "main page";
+                this.recipesList = false;
             } else {
                 this.searchRecipeText = "Custom recipe search";
+                this.recipesList = true;
+
             }
 
             this.searchRecipes = !this.searchRecipes;
@@ -53,8 +61,12 @@ export class TopBarComponent {
     }
 
     async logOut(): Promise<void> {
-        await this.productService.logOut();
-        console.log("logout clicked");
-        this.logOutButton.emit();
+        try {
+            await this.productService.logOut();
+            console.log("logout clicked");
+            this.logOutButton.emit();
+        } catch (error) {
+            console.error("Error during logout: ", error);
+        }
     }
 }

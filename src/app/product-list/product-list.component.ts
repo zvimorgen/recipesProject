@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProductsService, Product} from "../products.service";
 import {NgForm} from "@angular/forms";
 import { MatTableDataSource } from '@angular/material/table';
@@ -20,9 +20,9 @@ export class ProductListComponent implements OnInit {
     searchButtonText: string = "search";
     showListText: string = "Your Ingredient List";
     AddOrRemoveIngredients: string = "Add or remove ingredients";
-    displayedColumns: string[] = ['id']; // Include other columns as needed
+    displayedColumns: string[] = ['id'];
     dataSource: MatTableDataSource<Product> = new MatTableDataSource<Product>();
-    isLoading: boolean = false;
+    @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
     async ngOnInit() {
@@ -54,15 +54,15 @@ export class ProductListComponent implements OnInit {
     }
 
     async addToDataBase(ingredient: Product) {
-        this.isLoading = true;
+        this.isLoading.emit(true);
         await this.productService.addIngredientsToUser(ingredient);
         console.log(ingredient)
-        this.isLoading = false;
+        this.isLoading.emit(false);
     }
 
 
     async deleteFromUserList(ingredient: Product) {
-        this.isLoading = true;
+        this.isLoading.emit(true);
         try {
             await this.productService.deleteFromUserList(ingredient);
             this.ingredients = await this.productService.getUserData();
@@ -70,7 +70,7 @@ export class ProductListComponent implements OnInit {
         } catch (error) {
             console.error('Error deleting ingredient:', error);
         }
-        this.isLoading = false;
+        this.isLoading.emit(false);
     }
 
     onLoginSuccess() {
@@ -108,16 +108,15 @@ export class ProductListComponent implements OnInit {
 
     async onSearchIngredient(form: NgForm) {
         const searchTerm = form.value.search;
-        if (searchTerm) {
+        if (  this.searchButtonText === "search") {
             this.ingredients = await this.productService.searchIngredient(searchTerm);
             this.dataSource.data = await this.productService.searchIngredient(searchTerm);
-            // this.dataSource.data = this.ingredients;
             this.searchButtonText = "clear search";
         } else {
             await this.getIngredients();
             this.searchButtonText = "search";
             this.dataSource.data = this.ingredients;
+            form.resetForm();
         }
-        form.resetForm();
     }
 }

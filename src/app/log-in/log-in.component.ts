@@ -6,9 +6,9 @@ import {ProductsService} from '../products.service';
     templateUrl: './log-in.component.html',
     styleUrls: ['./log-in.component.css'],
 })
-export class LogInComponent implements OnInit{
+export class LogInComponent implements OnInit {
 
-    // @Output() loginSuccess: EventEmitter<any> = new EventEmitter<any>();
+    @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() loginSuccess: EventEmitter<boolean> = new EventEmitter<boolean>();
     email: string = '';
     password: string = '';
@@ -17,9 +17,12 @@ export class LogInComponent implements OnInit{
         private productsService: ProductsService,
     ) {
     }
-    ngOnInit(): void{}
+
+    ngOnInit(): void {
+    }
 
     async logIn() {
+        this.isLoading.emit(true);
         try {
             // Call your product service to handle the login or signup
             if (this.email !== '' && this.password !== '') {
@@ -37,12 +40,14 @@ export class LogInComponent implements OnInit{
         } catch (error) {
             console.error('Error during form submission', error);
         }
+        this.isLoading.emit(false);
     }
 
     async signIn() {
+        this.isLoading.emit(true);
         try {
-             const res = await this.productsService.signIn(this.email, this.password);
-            if(res) {
+            const res = await this.productsService.signIn(this.email, this.password);
+            if (res) {
                 this.email = '';
                 this.password = '';
                 this.loginSuccess.emit(true);
@@ -50,9 +55,11 @@ export class LogInComponent implements OnInit{
         } catch (error) {
             console.error('Error signing in', error);
         }
+        this.isLoading.emit(false);
     }
 
     async logOut() {
+        this.isLoading.emit(true);
         try {
             await this.productsService.logOut();
             console.log("logout clicked");
@@ -60,10 +67,9 @@ export class LogInComponent implements OnInit{
         } catch (error) {
             console.error('Error logging out', error);
         }
+        this.isLoading.emit(false);
     }
 }
-
-
 
 
 //   async logIn() {

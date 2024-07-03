@@ -2,8 +2,12 @@
     <img src="../../assets/foodImage.jpg" alt="" class="food-image">
     <div class="button-container" *ngIf="isFeatureEnabled">
 
+        <ng-container *ngIf="recipesList">
         <button class="styled-button top-bar-button" (click)="onRecipesButtonClick()">{{ recipesText }}</button>
+        </ng-container>
+        <ng-container *ngIf="recipesSearch">
         <button class="styled-button top-bar-button" (click)="onSearchButtonClick()">{{ searchRecipeText }}</button>
+        </ng-container>
         <button class="styled-button top-bar-button" (click)="logOut()">Logout</button>
     </div>
 </div>
