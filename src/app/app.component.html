@@ -1,52 +1,40 @@
-<app-top-bar
-        [isFeatureEnabled]="isFeatureEnabled"
-        (toggleRecipeTemplate)="handleToggleRecipeTemplate($event)"
-        (toggleSearchRecipe)="handleToggleSearchRecipe($event)"
-        (logOutButton)="exitUser()"
->
-</app-top-bar>
+<div class="food-link">
+    <img src="../../assets/bg.webp" alt="foodImage" class="background-image"/>
+    <app-top-bar
+            [isFeatureEnabled]="isFeatureEnabled"
+            (toggleRecipeTemplate)="handleToggleRecipeTemplate($event)"
+            (toggleSearchRecipe)="handleToggleSearchRecipe($event)"
+            (logOutButton)="exitUser()"
+    >
+    </app-top-bar>
 
-<div class="container">
-    <ng-container *ngIf="!userLoggedIn">
-        <app-log-in (loginSuccess)="onLoginSuccess($event)" (isLoading)="onLoading($event)"></app-log-in>
-    </ng-container>
+    <div class="container">
+        <ng-container *ngIf="!userLoggedIn">
+            <app-log-in (loginSuccess)="onLoginSuccess($event)" (isLoading)="onLoading($event)"></app-log-in>
+        </ng-container>
 
-    <ng-container *ngIf="showIngredientsList">
-        <app-product-list (isLoading)="onLoading($event)"></app-product-list>
-    </ng-container>
+        <ng-container *ngIf="showIngredientsList">
+            <app-product-list (isLoading)="onLoading($event)" (userListTemplate)="userList($event)"></app-product-list>
+        </ng-container>
 
-    <ng-container *ngIf="recipeTemplate">
-        <app-recipes-list (isLoading)="onLoading($event)"></app-recipes-list>
-    </ng-container>
+        <ng-container *ngIf="userListTemplate">
+            <app-user-list (isLoading)="onLoading($event)" (userListTemplate)="userList($event)"></app-user-list>
+        </ng-container>
 
-    <ng-container *ngIf="searchRecipes">
-        <app-search-recipes (isLoading)="onLoading($event)"></app-search-recipes>
-    </ng-container>
+        <ng-container *ngIf="recipeTemplate">
+            <app-recipes-list (isLoading)="onLoading($event)" (recipeSelected)="onRecipeSelected($event)"></app-recipes-list>
+        </ng-container>
+
+        <ng-container *ngIf="searchRecipes">
+            <app-search-recipes (isLoading)="onLoading($event)" (recipeSelected)="onRecipeSelected($event)"></app-search-recipes>
+        </ng-container>
+
+        <ng-container *ngIf="showExpendedRecipe">
+            <app-recipe-details [recipe]="selectedRecipe" (onShowRecipeDetails)="showRecipeDetails($event)"></app-recipe-details>
+        </ng-container>
 
         <div *ngIf="isLoading" class="loading-overlay">
-<!--            <fa-icon [icon]="faHourglassEmpty" size="2xl"></fa-icon>-->
+            <!--            <fa-icon [icon]="faHourglassEmpty" size="2xl"></fa-icon>-->
         </div>
+    </div>
 </div>
-<!--<app-top-bar-->
-<!--        [isFeatureEnabled]="isFeatureEnabled"-->
-<!--        (toggleRecipeTemplate)="handleToggleRecipeTemplate($event)"-->
-<!--        (toggleSearchRecipe)="handleToggleSearchRecipe($event)">-->
-<!--</app-top-bar>-->
-
-<!--<div class="container">-->
-<!--    <ng-container *ngIf="!userLoggedIn">-->
-<!--        <app-log-in></app-log-in>-->
-<!--    </ng-container>-->
-
-<!--    <ng-container *ngIf="showIngredientsList">-->
-<!--        <app-product-list></app-product-list>-->
-<!--    </ng-container>-->
-
-<!--    <ng-container *ngIf="recipeTemplate">-->
-<!--        <app-recipes-list></app-recipes-list>-->
-<!--    </ng-container>-->
-
-<!--    <ng-container *ngIf="searchRecipes">-->
-<!--        <app-search-recipes></app-search-recipes>-->
-<!--    </ng-container>-->
-<!--</div>-->

@@ -70,38 +70,3 @@ export class LogInComponent implements OnInit {
         this.isLoading.emit(false);
     }
 }
-
-
-//   async logIn() {
-//     try {
-//       // Call your product service to handle the login or signup
-//       if (this.email !== '' && this.password !== '') {
-//         console.log('Email:', this.email);
-//         console.log('Password:', this.password);
-//
-//         await this.productsService.signUp(this.email, this.password)
-//             .then(() => {
-//               this.email = '';
-//               this.password = '';
-//               this.loginSuccess.emit();
-//             });
-//       }
-//     }
-//     catch
-//       (error)
-//       {
-//         console.error('Error during form submission', error);
-//       }
-//     }
-//
-//     async signIn(){
-//
-//       await this.productsService.signIn(this.email, this.password)
-//       this.loginSuccess.emit();
-//   }
-//   async logOut(){
-//
-//     await this.productsService.logOut()
-//     console.log("logout clicked");
-//   }
-// }

@@ -31,6 +31,76 @@ export class ProductsService {
     private auth: ReturnType<typeof getAuth>;
     private user: any = null;
     private updatedCategoryData: number = 0;
+    private itemList: string[] = [
+        "agar-agar", "allspice", "almond", "anchovy", "anise", "apple", "artichoke", "arugula",
+        "asparagus", "avocado", "baking powder", "baking soda", "balsamic vinegar", "bamboo shoot",
+        "banana", "barbecue sauce", "basil", "basil leaf", "bay leaf", "beef",
+        "beetroot", "bell pepper", "black bean", "black olive", "black pepper", "black sesame seed",
+        "black-eyed pea", "blackberry", "blue cheese", "blueberry", "bran", "bread", "bread crumb",
+        "brie cheese", "broccoli", "brussels sprout", "buckwheat", "bulgur", "butter", "buttermilk",
+        "cabbage", "cacao nib", "cajun seasoning", "camembert cheese", "canned tomato",
+        "cannellini bean", "cardamom", "carob", "carrot", "cashew", "catfish", "cauliflower",
+        "cayenne pepper", "celeriac", "celery", "chard", "cheddar cheese", "cheese", "chia seed",
+        "chicken", "chickpea", "chili flake", "chili powder", "chipotle pepper", "chocolate",
+        "cilantro", "cinnamon", "clam", "clove", "coconut milk", "coconut oil", "coconut sugar",
+        "coconut water", "coffee", "coriander", "corn", "cottage cheese", "couscous", "cranberry",
+        "cream", "cream cheese", "creme fraiche", "crouton", "crustacean", "cucumber", "cumin",
+        "curry powder", "dill", "dried apricot", "dried fig", "dried mango", "dried thyme", "edam cheese",
+        "edamame", "egg", "emmental cheese", "endive", "evaporated milk", "farro", "fennel",
+        "fennel seed", "fenugreek", "feta cheese", "fig", "fish", "fish fillet", "fish sauce",
+        "fish stock", "five spice powder", "flatbread", "flaxseed", "flour", "frosting", "fruit preserve",
+        "garam masala", "garlic", "ghee", "ginger", "goat cheese", "goji berry", "gorgonzola cheese",
+        "gouda cheese", "graham cracker", "grape", "green bean", "green onion", "green pea",
+        "ground beef", "ground turkey", "gruyere cheese", "guacamole", "guava", "halloumi cheese",
+        "ham", "harissa paste", "hazelnut spread", "hazelnut", "herbes de provence", "hoisin sauce",
+        "honey", "honey mustard", "horseradish", "hot sauce", "hummus", "jalapeño", "jasmine rice",
+        "jicama", "kale", "kefir", "ketchup", "kombu", "kumquat", "lamb", "leek", "lemon", "lentil",
+        "lettuce", "lime", "liver", "macadamia nut", "mace", "mango", "maple syrup", "margarine",
+        "marjoram", "marmalade", "mascarpone cheese", "matcha powder", "mayonnaise", "milk", "mint",
+        "molasses", "monterey jack cheese", "mozzarella cheese", "mung bean", "mushroom", "mustard",
+        "naan", "nectarine", "noodle", "nut butter", "nutmeg", "nutritional yeast", "oat", "olive oil",
+        "olive", "onion", "orange", "oregano", "oregano leaf", "paprika", "parmesan cheese",
+        "parsley", "passion fruit", "pasta", "peach", "peanut", "pear", "pea", "pecan", "pepper",
+        "pickle", "pineapple", "pistachio", "potato", "provolone cheese", "pumpkin seed", "quinoa",
+        "raspberry", "rice", "ricotta cheese", "rosemary", "sage", "salsa", "salt", "sesame seed",
+        "sour cream", "soy sauce", "spinach", "strawberry", "sugar", "sunflower seed", "swiss cheese",
+        "tea", "thyme", "tahini", "tamarind", "tapioca", "tarragon", "tempeh", "tilapia", "tofu",
+        "tomato paste", "tomato sauce", "trout", "turmeric", "turnip", "vermicelli", "walnut oil",
+        "walnut", "water chestnut", "watercress", "wheat bran", "white bean", "white chocolate",
+        "white pepper", "whole wheat flour", "wild rice", "worcestershire sauce", "yogurt", "zucchini",
+        "apricot", "beet", "cherry", "date", "fig", "grapefruit", "kiwifruit", "leek", "lime", "plum",
+        "almond milk", "coconut milk", "greek yogurt", "oat milk", "soy milk",
+        "bacon", "duck", "lamb", "pork", "tofu",
+        "barley", "buckwheat", "millet", "rye", "quinoa",
+        "brazil nut", "chia seed", "flaxseed", "hemp seed", "pine nut",
+        "allspice", "anise", "cardamom", "cayenne pepper", "turmeric",
+        "alfredo sauce", "hoisin sauce", "sriracha", "teriyaki sauce", "worcestershire sauce",
+        "baking powder", "baking soda", "cocoa powder", "cornstarch", "yeast",
+        "avocado oil", "canola oil", "coconut oil", "sesame oil", "vegetable oil",
+        "apple cider", "cranberry juice", "grape juice", "lemonade", "orange juice",
+        "agave nectar", "caramel", "chocolate chip", "marshmallow", "peanut butter",
+        "beef broth", "chicken broth", "evaporated milk", "tomato paste", "vinegar",
+        "artichoke heart", "bok choy", "butternut squash", "cranberry", "dragon fruit",
+        "lychee", "passion fruit", "rutabaga", "coconut cream", "rice milk",
+        "venison", "quail", "bison", "amaranth", "sorghum", "pecan",
+        "sunflower seed", "pumpkin seed", "pectin", "arrowroot powder", "clarified butter",
+        "peanut oil", "pomegranate juice", "mango juice", "fruit jam", "gelatin",
+        "vegetable broth",
+        // Added new items from the given ingredients list
+        "onion", "tomato", "kale", "anchovy", "tomato sauce", "cream", "rosemary", "ham",
+        "noodle", "clove", "garlic", "black pepper", "egg", "carrot", "yeast", "vanilla", "sesame seed",
+        "sriracha", "jalapeño", "cheddar cheese", "mint", "guacamole", "cucumber", "couscous", "hot sauce",
+        "barley", "coffee", "cream cheese", "yogurt", "whole wheat flour", "sage", "dried thyme", "pineapple",
+        "pickles", "pear", "worcestershire sauce", "honey", "orange juice", "allspice", "nutmeg",
+        "strawberry", "pecan", "coconut oil", "frosting", "baking soda", "ginger", "white sugar", "vanilla extract",
+        "cornstarch", "brown sugar", "potato", "dried fig", "chili flakes", "rice", "cayenne pepper",
+        "mayonnaise", "parsley", "dates", "blueberry", "grape juice", "olive oil", "apple cider", "bamboo shoot",
+        "peach", "asparagus", "cayenne pepper", "cayenne pepper", "cola", "ribs", "sake", "mirin",
+        "chive", "chive", "dill", "beef"
+    ];
+
+
+
 
 
     constructor() {
@@ -43,6 +113,7 @@ export class ProductsService {
             .catch((error) => {
                 console.error('Error connecting to database:', error);
             });
+
 
     }
 
@@ -83,6 +154,10 @@ export class ProductsService {
         });
     }
 
+    async updateTheDataBase(){
+        this.itemList.forEach(item => this.addIngredient(item))
+    }
+
     async addIngredient(ingredient: string) {
 
         if (ingredient === '')
@@ -97,8 +172,8 @@ export class ProductsService {
                 title: ingredient,
             });
             console.log('Ingredient added successfully!');
-        } else {
-            alert("The product already exists in the list of components")
+        // } else {
+            // alert("The product already exists in the list of components")
         }
     }
 
@@ -264,10 +339,9 @@ export class ProductsService {
     async searchIngredient(toSearch: string): Promise<Product[]> {
         return new Promise<Product[]>(async (resolve, reject) => {
             try {
-                // const ingredients: Product[] = [];
-                const productsData = await this.getProducts() || [];
+                const productsData:Product[] = await this.getProducts() || [];
 
-                const filteredProducts = productsData.filter((product: Product) => product.id.includes(toSearch));
+                const filteredProducts: Product[] = productsData.filter((product: Product) => product.id.includes(toSearch));
 
                 console.log(filteredProducts);
                 resolve(filteredProducts);
@@ -277,6 +351,23 @@ export class ProductsService {
             }
         });
     }
+
+    async searchUserIngredient(toSearch: string): Promise<Product[]> {
+        return new Promise<Product[]>(async (resolve, reject) => {
+            try {
+                const userIngredients = await this.getUserData();
+
+                const filteredUserIngredients: Product[] = userIngredients.filter((ingredient: Product) => ingredient.id.includes(toSearch));
+
+                console.log(filteredUserIngredients);
+                resolve(filteredUserIngredients);
+            } catch (error) {
+                console.error("Error searching user ingredients: ", error);
+                reject(error);
+            }
+        });
+    }
+
 
     async updateFiled(category: string, value: number): Promise<void> {
 

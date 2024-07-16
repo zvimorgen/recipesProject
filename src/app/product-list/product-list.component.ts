@@ -12,23 +12,33 @@ export class ProductListComponent implements OnInit {
 
     loggedIn: boolean = false;
     showSearchForm: boolean = true;
-    showButton: boolean = false;
-    userList: boolean = false;
+    selectedIngredients: Product[] = [];
+    // showButton: boolean = false;
+    // userList: boolean = false;
     ingredients: Product[] = [];
     ingredient: string = '';
     id: string = '';
     searchButtonText: string = "search";
     showListText: string = "Your Ingredient List";
     AddOrRemoveIngredients: string = "Add or remove ingredients";
-    displayedColumns: string[] = ['id'];
+    userIngredients: Product[] = [];
     dataSource: MatTableDataSource<Product> = new MatTableDataSource<Product>();
     @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() userListTemplate: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
     async ngOnInit() {
         await this.getIngredients();
+        await this.getUserIngredients();
+        await this.resetButtons();
     }
 
+
+    async resetButtons(){
+        this. searchButtonText = "search";
+        this.showListText = "Your Ingredient List";
+        this.AddOrRemoveIngredients = "Add or remove ingredients";
+    }
     async onAddIngredient(form: NgForm) {
         if (form.valid) {
             await this.productService.addIngredient(this.ingredient);
@@ -54,23 +64,10 @@ export class ProductListComponent implements OnInit {
     }
 
     async addToDataBase(ingredient: Product) {
-        this.isLoading.emit(true);
+        // this.isLoading.emit(true);
         await this.productService.addIngredientsToUser(ingredient);
         console.log(ingredient)
-        this.isLoading.emit(false);
-    }
-
-
-    async deleteFromUserList(ingredient: Product) {
-        this.isLoading.emit(true);
-        try {
-            await this.productService.deleteFromUserList(ingredient);
-            this.ingredients = await this.productService.getUserData();
-            this.dataSource.data = this.ingredients;
-        } catch (error) {
-            console.error('Error deleting ingredient:', error);
-        }
-        this.isLoading.emit(false);
+        // this.isLoading.emit(false);
     }
 
     onLoginSuccess() {
@@ -85,25 +82,14 @@ export class ProductListComponent implements OnInit {
             this.AddOrRemoveIngredients = "Add or remove ingredients"
         }
         this.showSearchForm = !this.showSearchForm;
-
+    }
+    async addItems(){
+       await this.productService.updateTheDataBase();
     }
 
     async showUserList() {
 
-        this.showButton = !this.showButton;
-        if (this.showListText === 'Your Ingredient List') {
-            this.showListText = "The main list";
-            this.ingredients = await this.productService.getUserData();
-            this.dataSource.data = this.ingredients;
-            this.userList = true;
-            this.displayedColumns = ['id', 'title'];
-            console.log(this.ingredients);
-        } else {
-            this.showListText = 'Your Ingredient List';
-            await this.getIngredients();
-            this.userList = false;
-            this.displayedColumns = ['id'];
-        }
+        this.userListTemplate.emit(true);
     }
 
     async onSearchIngredient(form: NgForm) {
@@ -119,4 +105,23 @@ export class ProductListComponent implements OnInit {
             form.resetForm();
         }
     }
+
+    toggleSelection(ingredient: any) {
+        const index = this.selectedIngredients.indexOf(ingredient);
+        if (index === -1) {
+            this.selectedIngredients.push(ingredient);
+        } else {
+            this.selectedIngredients.splice(index, 1);
+        }
+    }
+
+
+    async getUserIngredients() {
+        this.userIngredients = await this.productService.getUserData();
+    }
+
+    isInUserList(ingredient: Product): boolean {
+        return this.userIngredients.some(userIngredient => userIngredient.id === ingredient.id);
+    }
+
 }

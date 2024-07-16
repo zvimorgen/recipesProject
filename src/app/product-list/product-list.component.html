@@ -1,60 +1,68 @@
-<div class="food-link">
-    <img src="../../assets/Food-Ingredients.jpg" alt="foodImage" class="background-image"/>
-    <div class="on-image" >
-        <div>
-            <button *ngIf="showSearchForm" class="buttons styled-button" (click)="showUserList()">{{ showListText }}</button>
-            <button class="buttons styled-button" (click)="toggleSearchForm()">{{ AddOrRemoveIngredients }}</button>
-            <br>
+<div class="navigateButtons">
+    <button *ngIf="showSearchForm" class="buttons styled-button" (click)="showUserList()">{{ showListText }}
+    </button>
+    <button class="buttons styled-button" (click)="toggleSearchForm()">{{ AddOrRemoveIngredients }}</button>
+    <button class="buttons styled-button" (click)="addItems()">add items</button>
+    <br>
+</div>
 
-            <div [hidden]="!this.showSearchForm">
-                <form class="search" (ngSubmit)="onSearchIngredient(searchForm)" #searchForm="ngForm">
+
+
+<div *ngIf="showSearchForm">
+    <div class="overlay">
+        <div [hidden]="!this.showSearchForm">
+            <form (ngSubmit)="onSearchIngredient(searchForm)" #searchForm="ngForm">
                 <input type="text" name="search" ngModel required>
                 <button type="submit" class="search-button styled-button">{{ searchButtonText }}</button>
-            </form><br><br><br><br>
-                <div class="table-container">
-                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 my-table">
-                        <ng-container matColumnDef="id">
-                            <mat-header-cell *matHeaderCellDef> Ingredient</mat-header-cell>
-                            <mat-cell *matCellDef="let ingredient">
-                                <a type="button" (click)="addToDataBase(ingredient)">{{ ingredient.id }} </a>
-                            </mat-cell>
-                        </ng-container>
-
-                        <ng-container *ngIf="userList" matColumnDef="title">
-                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                            <mat-cell class="delete-cell" *matCellDef="let ingredient" style="text-align: end">
-                                <a type="button" (click)="deleteFromUserList(ingredient)"><i class="material-icons">delete</i></a>
-                            </mat-cell>
-                        </ng-container>
-
-                        <mat-header-row *matHeaderRowDef="displayedColumns" class="custom-header-row"></mat-header-row>
-                        <mat-row *matRowDef="let row; columns: displayedColumns;" class="custom-row"></mat-row>
-                    </table>
-                </div>
-            </div>
-
-            <br>
-            <div [hidden]="showSearchForm">
-                <form class="add" (ngSubmit)="onAddIngredient(addForm)" #addForm="ngForm">
-                    <label>Ingredient:</label>
-                    <input type="text" name="ingredient" [(ngModel)]="ingredient" required>
-                    <br>
-                    <button class="styled-button" type="submit">Add a new ingredient</button>
-                </form>
-                <br>
-
-                <form class="delete" (ngSubmit)="onDeleteIngredient(deleteForm)" #deleteForm="ngForm">
-                    <label>Ingredient id:</label>
-                    <input type="text" name="id" [(ngModel)]="id" required>
-                    <br>
-                    <button class="styled-button" type="submit">Delete an ingredient</button>
-                </form>
+            </form>
+            <div class="buttons-container">
+                <button *ngFor="let ingredient of ingredients"
+                        class="item-button"
+                        [ngClass]="{'active': selectedIngredients.includes(ingredient), 'user-item': isInUserList(ingredient)}"
+                        (click)="toggleSelection(ingredient)">
+                    <a type="button" (click)="addToDataBase(ingredient)"> {{ ingredient.id }}</a>
+                </button>
             </div>
         </div>
     </div>
-
-    <ng-template #loginTemplate>
-        <app-log-in (loginSuccess)="onLoginSuccess()"></app-log-in>
-    </ng-template>
-
 </div>
+
+<!--<div *ngIf="showSearchForm">-->
+<!--    <div class="overlay">-->
+<!--        <div [hidden]="!this.showSearchForm">-->
+<!--            <form (ngSubmit)="onSearchIngredient(searchForm)" #searchForm="ngForm">-->
+<!--                <input type="text" name="search" ngModel required>-->
+<!--                <button type="submit" class="search-button styled-button">{{ searchButtonText }}</button>-->
+<!--            </form>-->
+<!--            <div class="buttons-container">-->
+<!--                <button *ngFor="let ingredient of ingredients"-->
+<!--                        class="item-button"-->
+<!--                        [ngClass]="{'active': selectedIngredients.includes(ingredient)}"-->
+<!--                        (click)="toggleSelection(ingredient)">-->
+<!--                    <a type="button" (click)="addToDataBase(ingredient)"> {{ ingredient.id }}</a>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<br>
+<div class="add-or-remove" [hidden]="showSearchForm">
+    <form class="add" (ngSubmit)="onAddIngredient(addForm)" #addForm="ngForm">
+        <label>Ingredient:</label>
+        <input type="text" name="ingredient" [(ngModel)]="ingredient" required>
+        <br>
+        <button class="styled-button" type="submit">Add a new ingredient</button>
+    </form>
+    <br>
+
+    <form class="delete" (ngSubmit)="onDeleteIngredient(deleteForm)" #deleteForm="ngForm">
+        <label>Ingredient id:</label>
+        <input type="text" name="id" [(ngModel)]="id" required>
+        <br>
+        <button class="styled-button" type="submit">Delete an ingredient</button>
+    </form>
+</div>
+<ng-template #loginTemplate>
+    <app-log-in (loginSuccess)="onLoginSuccess()"></app-log-in>
+</ng-template>

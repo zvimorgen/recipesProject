@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, Input} from '@angular/core';
+import {Component, EventEmitter, Output, Input, OnInit} from '@angular/core';
 import {ProductsService} from '../products.service'
 
 @Component({
@@ -6,7 +6,7 @@ import {ProductsService} from '../products.service'
     templateUrl: './top-bar.component.html',
     styleUrls: ['./top-bar.component.css']
 })
-export class TopBarComponent {
+export class TopBarComponent implements OnInit{
 
     constructor(private productService: ProductsService) {
     }
@@ -23,7 +23,16 @@ export class TopBarComponent {
     recipesSearch: boolean = true;
     recipesList: boolean = true;
 
+    async ngOnInit() {
+        await this.resetButtons();
+    }
 
+    async resetButtons(){
+        this.searchRecipeText = "Custom recipe search";
+        this.recipesText = "List of recipes"
+        this.recipesSearch = true;
+        this.recipesList = true;
+    }
     onRecipesButtonClick() {
 
         if (!this.searchRecipes) {
@@ -63,6 +72,7 @@ export class TopBarComponent {
     async logOut(): Promise<void> {
         try {
             await this.productService.logOut();
+            await this.resetButtons();
             console.log("logout clicked");
             this.logOutButton.emit();
         } catch (error) {
